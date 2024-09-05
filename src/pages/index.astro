@@ -1,16 +1,21 @@
 ---
-
+import Slider from "@components/Slider.astro";
+import TopBar from "../components/TopBar.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>ServiEstiba</title>
+  </head>
+  <body>
+    <header class="relative">
+      <TopBar />
+      <Slider />
+    </header>
+    <main class="h-screen bg-green-300"></main>
+  </body>
 </html>
