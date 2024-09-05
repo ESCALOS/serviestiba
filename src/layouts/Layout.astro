@@ -1,0 +1,32 @@
+---
+import Navbar from "@components/Nabvar";
+import Slider from "@components/Slider.astro";
+import { getImage } from "astro:assets";
+import Logo from "@images/logo.png";
+
+const logo = await getImage({
+  src: Logo,
+  height: 64,
+});
+
+const routePath = `/${Astro.url.pathname.split("/")[1]}`;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>ServiEstiba</title>
+  </head>
+  <body>
+    <header class="relative">
+      <Navbar client:load logo={logo.src} routePath={routePath} />
+      <Slider />
+    </header>
+    <main class="h-screen bg-green-300">
+      <slot />
+    </main>
+  </body>
+</html>

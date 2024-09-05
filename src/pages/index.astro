@@ -1,21 +1,7 @@
 ---
-import Slider from "@components/Slider.astro";
-import TopBar from "../components/TopBar.astro";
+import Layout from "src/layouts/Layout.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>ServiEstiba</title>
-  </head>
-  <body>
-    <header class="relative">
-      <TopBar />
-      <Slider />
-    </header>
-    <main class="h-screen bg-green-300"></main>
-  </body>
-</html>
+<Layout>
+  <h1 class="text-white font-bold text-2xl">TItulo 1</h1>
+</Layout>

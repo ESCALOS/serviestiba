@@ -38,3 +38,31 @@ export const sliderItems = [
     alt: "Coragensc 10lt",
   },
 ];
+
+export const navItems = [
+  {
+    id: 1,
+    name: "Inicio",
+    href: "/",
+  },
+  {
+    id: 2,
+    name: "Nosotros",
+    href: "/nosotros",
+  },
+  {
+    id: 3,
+    name: "Servicios",
+    href: "/servicios",
+  },
+  {
+    id: 4,
+    name: "Contáctenos",
+    href: "/contacto",
+  },
+  {
+    id: 5,
+    name: "Trabaja con Nososotros",
+    href: "/trabaja-con-nosotros",
+  },
+];
