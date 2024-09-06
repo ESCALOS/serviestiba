@@ -1,8 +1,11 @@
 ---
+import BaseHead from "@components/BaseHead.astro";
 import Navbar from "@components/Nabvar";
 import Slider from "@components/Slider.astro";
 import { getImage } from "astro:assets";
 import Logo from "@images/logo.png";
+import { ViewTransitions } from "astro:transitions";
+import { SITE_TITLE, SITE_DESCRIPTION } from "src/constants";
 
 const logo = await getImage({
   src: Logo,
@@ -14,16 +17,13 @@ const routePath = `/${Astro.url.pathname.split("/")[1]}`;
 
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>ServiEstiba</title>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <ViewTransitions />
   </head>
   <body>
     <header class="relative">
       <Navbar client:load logo={logo.src} routePath={routePath} />
-      <Slider />
+      {routePath === "/" && <Slider />}
     </header>
     <main class="h-screen bg-green-300">
       <slot />
