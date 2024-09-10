@@ -1,7 +1,39 @@
 ---
 import Layout from "src/layouts/Layout.astro";
+import About from "@images/about.jpg";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
-  <h1 class="text-white font-bold text-2xl">Nosotros</h1>
+  <div class="flex flex-wrap relative">
+    <div
+      class="bg-tertiary-500 flex-col items-center lg:h-[500px] lg:w-1/2 lg:rounded-br-3xl text-green-900 leading-7 z-20 text-justify relative"
+    >
+      <div
+        class="lg:max-w-xl lg:absolute lg:right-0 flex flex-col h-full justify-center p-8"
+      >
+        <h1 class="text-4xl font-bold">Sobre Nosotros</h1>
+        <p class="mt-8 mb-4">
+          En SERVIESTIBA, la eficiencia en nuestros servicios es una
+          preocupación constante para el buen funcionamiento de su empresa o
+          cualquier tipo de apoyo que se requiere ya sean de carácter
+          Industrial, Comercial, de dimensiones pequeñas, grandes y hasta muy
+          grandes (operatividad).
+        </p>
+        <p>
+          Para llegar a este nivel desarrollamos un plan de trabajo a la medida
+          de las necesidades del cliente, nuestro servicio especializado de
+          Estiba y desestiba, permitirá menor tiempo en sus operaciones así como
+          seguimiento y medición del impacto de nuestros servicios en procesos
+          de su empresa, garantizado por un efectivo sistema de supervisión y
+          colaboradores calificados.
+        </p>
+      </div>
+    </div>
+    <Image
+      src={About}
+      alt="ServiEstiba"
+      class="absolute right-0 object-cover max-h-[500px] w-3/4 hidden lg:block"
+    />
+  </div>
 </Layout>

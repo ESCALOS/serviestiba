@@ -6,6 +6,7 @@ import { getImage } from "astro:assets";
 import Logo from "@images/logo.png";
 import { ViewTransitions } from "astro:transitions";
 import { SITE_TITLE, SITE_DESCRIPTION } from "src/constants";
+import Footer from "@components/Footer.astro";
 
 const logo = await getImage({
   src: Logo,
@@ -25,8 +26,10 @@ const routePath = `/${Astro.url.pathname.split("/")[1]}`;
       <Navbar client:load logo={logo.src} routePath={routePath} />
       {routePath === "/" && <Slider />}
     </header>
-    <main class="h-screen bg-green-300">
+    <main>
       <slot />
+      <div class="h-52"></div>
     </main>
+    <Footer />
   </body>
 </html>

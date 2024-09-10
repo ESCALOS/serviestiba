@@ -1,7 +1,7 @@
 export const SITE_TITLE = "ServiEstiba";
 
 export const SITE_DESCRIPTION =
-  "Descubre los mejores Paquetes Turísticos en Iquitos - Perú, junto a nosotros.  Somos tu mejor opción en tus viajes en Pareja, En Familia y amigos. Celebra junto a nosotros tu viaje de Luna de miel, viajes de Cumpleaños, aniversarios. En los Mejores hoteles y Lodge en la Selva.";
+  "Descrube a los mejores estibadores de América Latina";
 
 export const topbarLinks = [
   {
@@ -18,11 +18,6 @@ export const topbarLinks = [
     id: 3,
     name: "Buzón de sugerencias",
     href: "/buzon-de-sugerencias",
-  },
-  {
-    id: 4,
-    name: "Contacto",
-    href: "/contacto",
   },
 ];
 
@@ -46,27 +41,22 @@ export const sliderItems = [
 
 export const navItems = [
   {
-    id: 1,
-    name: "Inicio",
-    href: "/",
-  },
-  {
-    id: 2,
+    id: 4,
     name: "Nosotros",
     href: "/nosotros",
   },
   {
-    id: 3,
+    id: 5,
     name: "Servicios",
     href: "/servicios",
   },
   {
-    id: 4,
+    id: 6,
     name: "Contáctenos",
-    href: "/contacto",
+    href: "/contactenos",
   },
   {
-    id: 5,
+    id: 7,
     name: "Trabaja con Nososotros",
     href: "/trabaja-con-nosotros",
   },

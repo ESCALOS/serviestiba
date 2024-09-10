@@ -10,6 +10,7 @@ type Props = {
 
 type TopBarProps = {
     scrolled: boolean;
+    isHome: boolean;
 }
 
 type SidebarProps = {
@@ -17,9 +18,9 @@ type SidebarProps = {
     routePath: string;
 }
 
-function TopBar({ scrolled }: TopBarProps) {
+function TopBar({ scrolled, isHome }: TopBarProps) {
     return (
-        <div className={`${scrolled ? 'bg-gray-200 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
+        <div className={`${scrolled || !isHome ? 'bg-tertiary-500 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
             <div className="max-w-7xl mx-auto px-4">
                 <ul
                     className="flex justify-end items-center gap-4 font-bold text-sm h-10"
@@ -45,12 +46,13 @@ function TopBar({ scrolled }: TopBarProps) {
 
 function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string }) {
     const isHome = routePath === "/";
+
     return (
         <ul className={`lg:flex hidden justify-around gap-4 items-center font-bold text-lg ${scrolled || !isHome ? 'text-green-700' : 'text-white'}`}>
             {
                 navItems.map(({ id, name, href }) =>
                     <li key={id}>
-                        <a className={`${routePath !== href ? 'hover:border-b-2' : 'border-b-2'} ${!isHome && 'border-green-700'} ${scrolled || !isHome && 'border-green-700'}`} href={href}>{name}</a>
+                        <a className={`${routePath !== href ? 'hover:text-green-500' : 'text-green-500'}`} href={href}>{name}</a>
                     </li>
                 )
             }
@@ -63,6 +65,7 @@ function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string
 
 function Sidebar({ open, routePath }: SidebarProps) {
     const isHome = routePath === "/";
+    const items = navItems.concat(topbarLinks);
     return (
         <div className="relative lg:hidden">
             <div
@@ -71,7 +74,7 @@ function Sidebar({ open, routePath }: SidebarProps) {
             >
                 <ul className="flex flex-col h-full gap-8 p-8">
                     {
-                        navItems.map(({ id, name, href }) =>
+                        items.map(({ id, name, href }) =>
                             <li key={id}>
                                 <a className={`text-lg uppercase font-bold  ${isHome ? 'text-stone-600 hover:text-green-700' : 'text-green-700'}`} href={href}>{name}</a>
                             </li>
@@ -112,21 +115,21 @@ function Navbar({ logo, routePath }: Props) {
 
     return (
         <>
-            <TopBar scrolled={scrolled} />
-            <div className={`fixed top-0 lg:top-10 z-20 w-full ${(scrolled || !isHome) ? 'bg-white' : 'bg-white lg:bg-transparent lg:backdrop-blur-md'}`}>
+            <TopBar scrolled={scrolled} isHome={isHome} />
+            <div className={`fixed top-0 lg:top-10 z-20 w-full ${(scrolled || !isHome) ? 'bg-white border-b' : 'bg-white lg:bg-transparent lg:backdrop-blur-md'}`}>
                 <nav className="max-w-7xl mx-auto px-4 flex justify-between items-center h-24">
-                    <img className={`${!scrolled && isHome && 'lg:brightness-[8]'}`} src={logo} alt="Logo" width={200} />
+                    <a href="/"><img className={`${!scrolled && isHome && 'lg:brightness-[8]'}`} src={logo} alt="Logo" width={200} /></a>
                     <NavList scrolled={scrolled} routePath={routePath} />
                     {/* Botón para abrir/cerrar la sidebar */}
                     <button
                         onClick={toggleSidebar}
-                        className="p-4 focus:outline-none lg:hidden"
+                        className="p-4 focus:outline-none lg:hidden text-green-600"
                     >
                         {open ? <FaXmark size={24} /> : <FaBars size={24} />}
                     </button>
                 </nav>
             </div>
-            <div className={`h-24 relative ${isHome ? 'lg:h-0' : 'lg:h-36'} bg-white`}></div>
+            <div className={`h-24 relative ${isHome ? 'lg:h-0' : 'lg:h-[136px]'} bg-white`}></div>
             <Sidebar open={open} routePath={routePath} />
         </>
     )

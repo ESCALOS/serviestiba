@@ -7,7 +7,7 @@ import slide3 from "@images/slider/banner-roundup-10lt-4.jpg";
 ---
 
 <swiper-container
-  class="w-full"
+  class="w-full custom-swiper"
   loop="true"
   pagination="true"
   pagination-clickable="true"
@@ -44,3 +44,8 @@ import slide3 from "@images/slider/banner-roundup-10lt-4.jpg";
 
   register();
 </script>
+<style>
+  .custom-swiper {
+    --swiper-theme-color: #15803d;
+  }
+</style>
