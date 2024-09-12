@@ -4,6 +4,7 @@ import { FaXmark } from "react-icons/fa6"
 import { FaBars } from "react-icons/fa"
 import SuggestionForm from "./SuggestionForm"
 import Modal from "./Modal"
+import SocialResponsibility from "./SocialResponsibility"
 
 type Props = {
     logo: string,
@@ -26,7 +27,7 @@ const topbarItems = [
     {
         id: 1,
         name: "Responsabilidad Social",
-        content: <div><img src="/path/to/image.jpg" alt="Responsabilidad Social" /><p>Texto sobre responsabilidad social...</p></div>,
+        content: <SocialResponsibility />,
     },
     {
         id: 2,
