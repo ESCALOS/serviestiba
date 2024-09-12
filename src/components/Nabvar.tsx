@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { navItems, topbarLinks } from "src/constants"
 import { FaXmark } from "react-icons/fa6"
 import { FaBars } from "react-icons/fa"
+import SuggestionForm from "./SuggestionForm"
+import Modal from "./Modal"
 
 type Props = {
     logo: string,
@@ -18,30 +20,61 @@ type SidebarProps = {
     routePath: string;
 }
 
+const topbarItems = [
+    {
+        id: 1,
+        name: "Responsabilidad Social",
+        content: <div><img src="/path/to/image.jpg" alt="Responsabilidad Social" /><p>Texto sobre responsabilidad social...</p></div>,
+    },
+    {
+        id: 2,
+        name: "Canal de denuncias",
+        content: <SuggestionForm />, // Puedes usar el mismo formulario o crear uno nuevo
+    },
+    {
+        id: 3,
+        name: "Buzón de sugerencias",
+        content: <SuggestionForm />, // Formulario de sugerencias
+    },
+];
+
 function TopBar({ scrolled, isHome }: TopBarProps) {
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+
+    const handleOpenModal = (content: React.ReactNode) => {
+        setModalContent(content);
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        setModalContent(null);
+    };
+
     return (
         <div className={`${scrolled || !isHome ? 'bg-tertiary-500 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
             <div className="max-w-7xl mx-auto px-4">
-                <ul
-                    className="flex justify-end items-center gap-4 font-bold text-sm h-10"
-                >
-                    {
-                        topbarLinks.map(({ id, name, href }) => (
-                            <li key={id}>
-                                <a
-                                    href={href}
-                                    className="hover:text-gray-300 transition duration-300"
-                                >
-                                    {name}
-                                </a>
-                            </li>
-                        ))
-                    }
+                <ul className="flex justify-end items-center gap-4 font-bold text-sm h-10">
+                    {topbarItems.map(({ id, name, content }) => (
+                        <li key={id}>
+                            <button
+                                onClick={() => handleOpenModal(content)}
+                                className="hover:opacity-80 transition duration-300"
+                            >
+                                {name}
+                            </button>
+                        </li>
+                    ))}
                 </ul>
             </div>
-        </div>
 
-    )
+            {/* Modal */}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                {modalContent}
+            </Modal>
+        </div>
+    );
 }
 
 function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string }) {

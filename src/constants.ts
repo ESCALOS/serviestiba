@@ -1,4 +1,4 @@
-export const SITE_TITLE = "ServiEstiba";
+export const SITE_TITLE = "Serviestiba – Estiba y Desestiba de Mercancias";
 
 export const SITE_DESCRIPTION =
   "Descrube a los mejores estibadores de América Latina";
@@ -43,17 +43,17 @@ export const navItems = [
   {
     id: 4,
     name: "Nosotros",
-    href: "/nosotros",
+    href: "/#nosotros",
   },
   {
     id: 5,
     name: "Servicios",
-    href: "/servicios",
+    href: "/#servicios",
   },
   {
     id: 6,
     name: "Contáctenos",
-    href: "/contactenos",
+    href: "/#contactenos",
   },
   {
     id: 7,

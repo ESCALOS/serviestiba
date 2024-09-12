@@ -1,7 +1,16 @@
 ---
+import Nosotros from "@components/Nosotros.astro";
+import Slider from "@components/Slider.astro";
 import Layout from "src/layouts/Layout.astro";
+import Stats from "@components/Stats";
+import Servicios from "@components/Servicios.astro";
+import CallToAction from "@components/CallToAction.astro";
 ---
 
 <Layout>
-  <h1 class="text-white font-bold text-2xl">TItulo 1</h1>
+  <Slider />
+  <Nosotros />
+  <Stats client:visible />
+  <Servicios />
+  <CallToAction />
 </Layout>
