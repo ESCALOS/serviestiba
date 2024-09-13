@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import { navItems, topbarLinks } from "src/constants"
 import { FaXmark } from "react-icons/fa6"
 import { FaBars } from "react-icons/fa"
@@ -13,11 +13,13 @@ type Props = {
 type TopBarProps = {
     scrolled: boolean;
     isHome: boolean;
+    handleOpenModal: (content: ReactNode) => void
 }
 
 type SidebarProps = {
     open: boolean;
     routePath: string;
+    handleOpenModal: (content: ReactNode) => void
 }
 
 const topbarItems = [
@@ -38,41 +40,25 @@ const topbarItems = [
     },
 ];
 
-function TopBar({ scrolled, isHome }: TopBarProps) {
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [modalContent, setModalContent] = useState<React.ReactNode>(null);
-
-    const handleOpenModal = (content: React.ReactNode) => {
-        setModalContent(content);
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-        setModalContent(null);
-    };
-
+function TopBar({ scrolled, isHome, handleOpenModal }: TopBarProps) {
     return (
-        <div className={`${scrolled || !isHome ? 'bg-tertiary-500 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
-            <div className="max-w-7xl mx-auto px-4">
-                <ul className="flex justify-end items-center gap-4 font-bold text-sm h-10">
-                    {topbarItems.map(({ id, name, content }) => (
-                        <li key={id}>
-                            <button
-                                onClick={() => handleOpenModal(content)}
-                                className="hover:opacity-80 transition duration-300"
-                            >
-                                {name}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+        <div>
+            <div className={`${scrolled || !isHome ? 'bg-tertiary-500 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
+                <div className="max-w-7xl mx-auto px-4">
+                    <ul className="flex justify-end items-center gap-4 font-bold text-sm h-10">
+                        {topbarItems.map(({ id, name, content }) => (
+                            <li key={id}>
+                                <button
+                                    onClick={() => handleOpenModal(content)}
+                                    className="hover:opacity-80 transition duration-300"
+                                >
+                                    {name}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-
-            {/* Modal */}
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                {modalContent}
-            </Modal>
         </div>
     );
 }
@@ -96,9 +82,8 @@ function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string
     )
 }
 
-function Sidebar({ open, routePath }: SidebarProps) {
+function Sidebar({ open, routePath, handleOpenModal }: SidebarProps) {
     const isHome = routePath === "/";
-    const items = navItems.concat(topbarLinks);
     return (
         <div className="relative lg:hidden">
             <div
@@ -107,12 +92,22 @@ function Sidebar({ open, routePath }: SidebarProps) {
             >
                 <ul className="flex flex-col h-full gap-8 p-8">
                     {
-                        items.map(({ id, name, href }) =>
+                        navItems.map(({ id, name, href }) =>
                             <li key={id}>
                                 <a className={`text-lg uppercase font-bold  ${isHome ? 'text-stone-600 hover:text-green-700' : 'text-green-700'}`} href={href}>{name}</a>
                             </li>
                         )
                     }
+                    {topbarItems.map(({ id, name, content }) => (
+                        <li key={id}>
+                            <button
+                                onClick={() => handleOpenModal(content)}
+                                className={`text-lg uppercase font-bold  ${isHome ? 'text-stone-600 hover:text-green-700' : 'text-green-700'}`}
+                            >
+                                {name}
+                            </button>
+                        </li>
+                    ))}
                     <li className="mt-8">
                         <a className={`py-4 px-8 rounded-2xl text-lg uppercase font-bold text-green-700 border border-green-700 hover:text-white hover:bg-green-700`} href="/intranet">Intranet</a>
                     </li>
@@ -125,6 +120,18 @@ function Sidebar({ open, routePath }: SidebarProps) {
 function Navbar({ logo, routePath }: Props) {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+
+    const handleOpenModal = (content: React.ReactNode) => {
+        setModalContent(content);
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        setModalContent(null);
+    };
     const isHome = routePath === "/";
 
     const toggleSidebar = () => {
@@ -148,7 +155,7 @@ function Navbar({ logo, routePath }: Props) {
 
     return (
         <>
-            <TopBar scrolled={scrolled} isHome={isHome} />
+            <TopBar scrolled={scrolled} isHome={isHome} handleOpenModal={handleOpenModal} />
             <div className={`fixed top-0 lg:top-10 z-20 w-full ${(scrolled || !isHome) ? 'bg-white border-b' : 'bg-white lg:bg-transparent lg:backdrop-blur-md'}`}>
                 <nav className="max-w-7xl mx-auto px-4 flex justify-between items-center h-24">
                     <a href="/"><img className={`${!scrolled && isHome && 'lg:brightness-[8]'}`} src={logo} alt="Logo" width={200} /></a>
@@ -163,7 +170,11 @@ function Navbar({ logo, routePath }: Props) {
                 </nav>
             </div>
             <div className={`h-24 relative ${isHome ? 'lg:h-0' : 'lg:h-[136px]'} bg-white`}></div>
-            <Sidebar open={open} routePath={routePath} />
+            <Sidebar open={open} routePath={routePath} handleOpenModal={handleOpenModal} />
+            {/* Modal */}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                {modalContent}
+            </Modal>
         </>
     )
 }
