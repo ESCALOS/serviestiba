@@ -1,0 +1,39 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  image: {
+    path: string;
+    alt: string;
+    style: string;
+  };
+  title: string;
+  subtitle?: string;
+}
+
+const {
+  image: { path, alt, style },
+  title,
+  subtitle,
+} = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/breadcrumb/*.{png,jpg}"
+);
+if (!images[path])
+  throw new Error(
+    `"${path}" does not exist in glob: "src/images/breadcrumb/*.{png}"`
+  );
+---
+
+<section class="relative flex items-end justify-start h-52 flex-wrap">
+  <Image
+    src={images[path]()}
+    alt={alt}
+    class="absolute object-cover w-full h-full"
+    loading="eager"
+    style={style}
+  />
+  <div class="absolute inset-0 bg-black opacity-80 mix-blend-multiply"></div>
+</section>

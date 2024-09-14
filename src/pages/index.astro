@@ -1,16 +1,18 @@
 ---
-import Nosotros from "@components/Nosotros.astro";
+import Nosotros from "@sections/Nosotros.astro";
 import Slider from "@components/Slider.astro";
 import Layout from "src/layouts/Layout.astro";
-import Stats from "@components/Stats";
-import Servicios from "@components/Servicios.astro";
-import CallToAction from "@components/CallToAction.astro";
+import Stats from "@sections/Stats";
+import Servicios from "@sections/Servicios.astro";
+import CallToAction from "@sections/CallToAction.astro";
+import ClientList from "@sections/ClientList";
 ---
 
 <Layout>
   <Slider />
   <Nosotros />
   <Stats client:visible />
-  <Servicios />
   <CallToAction />
+  <Servicios />
+  <ClientList client:visible />
 </Layout>

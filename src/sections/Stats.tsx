@@ -7,7 +7,7 @@ const statsData = [
     { id: 4, target: 48, icon: "geografia.png", description: "distritos de cobertura." },
 ];
 
-const StatsComponent = () => {
+const Stats = () => {
     const countersRef = useRef<HTMLDivElement[]>([]);
 
     useEffect(() => {
@@ -48,9 +48,9 @@ const StatsComponent = () => {
     }, []);
 
     return (
-        <section className="bg-[#f4f5f0] py-12">
+        <section className="bg-[#f4f5f0] py-24">
             <div className="max-w-7xl mx-auto px-4 text-center">
-                <h2 className="text-2xl font-bold text-gray-800 mb-8">Somos tu guía experto</h2>
+                <h2 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-8">Somos tu Guía Experto</h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {statsData.map(({ id, icon, target, description }, index) => (
                         <div key={id}>
@@ -75,4 +75,4 @@ const StatsComponent = () => {
     );
 };
 
-export default StatsComponent;
+export default Stats;

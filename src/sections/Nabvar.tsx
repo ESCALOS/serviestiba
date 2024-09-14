@@ -2,8 +2,8 @@ import { useEffect, useState, type ReactNode } from "react"
 import { navItems, topbarLinks } from "src/constants"
 import { FaXmark } from "react-icons/fa6"
 import { FaBars } from "react-icons/fa"
-import SuggestionForm from "./SuggestionForm"
-import Modal from "./Modal"
+import SuggestionForm from "../components/SuggestionForm"
+import Modal from "../components/Modal"
 import SocialResponsibility from "./SocialResponsibility"
 
 type Props = {

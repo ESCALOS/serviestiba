@@ -1,10 +1,11 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
-import Navbar from "@components/Nabvar";
+import Navbar from "@sections/Nabvar";
 import { getImage } from "astro:assets";
 import Logo from "@images/logo.png";
 import { SITE_TITLE, SITE_DESCRIPTION } from "src/constants";
 import Footer from "@components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
 
 const logo = await getImage({
   src: Logo,
@@ -17,6 +18,7 @@ const routePath = `/${Astro.url.pathname.split("/")[1]}`;
 <html lang="es" class="scroll-smooth">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <ViewTransitions />
   </head>
   <body>
     <header class="relative">

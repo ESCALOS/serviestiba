@@ -43,21 +43,34 @@ export const navItems = [
   {
     id: 4,
     name: "Nosotros",
-    href: "/#nosotros",
+    href: "/nosotros",
   },
   {
     id: 5,
     name: "Servicios",
-    href: "/#servicios",
+    href: "/servicios",
   },
   {
     id: 6,
     name: "Contáctenos",
-    href: "/#contactenos",
+    href: "/contactenos",
   },
   {
     id: 7,
     name: "Trabaja con Nososotros",
     href: "/trabaja-con-nosotros",
   },
+];
+export const clients = [
+  { id: 1, name: "anita" },
+  { id: 2, name: "cogorno" },
+  { id: 3, name: "contugas" },
+  { id: 4, name: "em" },
+  { id: 5, name: "hartrodt" },
+  { id: 6, name: "molitalia" },
+  { id: 7, name: "nestle" },
+  { id: 8, name: "ruttasac" },
+  { id: 9, name: "santacatalina" },
+  { id: 10, name: "tcli" },
+  { id: 11, name: "transpesa" }
 ];
