@@ -24,7 +24,7 @@ const routePath = `/${Astro.url.pathname.split("/")[1]}`;
     <header class="relative">
       <Navbar client:load logo={logo.src} routePath={routePath} />
     </header>
-    <main>
+    <main class="max-w-[1920px] mx-auto">
       <slot />
     </main>
     <Footer />
