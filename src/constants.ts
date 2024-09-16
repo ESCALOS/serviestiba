@@ -41,6 +41,11 @@ export const sliderItems = [
 
 export const navItems = [
   {
+    id: 3,
+    name: "Inicio",
+    href: "/",
+  },
+  {
     id: 4,
     name: "Nosotros",
     href: "/nosotros",
