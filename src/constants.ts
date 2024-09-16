@@ -80,15 +80,21 @@ export const clients = [
   { id: 11, name: "transpesa" }
 ];
 
-export const timelineData = [
-  { year: 1981, image: '/about.jpg', description: 'Evento importante en 1981' },
-  { year: 1994, image: '/irapay1.png', description: 'Hito alcanzado en 1994' },
-  { year: 1996, image: '/irapay2.png', description: 'Desarrollo significativo en 1996' },
-  { year: 1999, image: '/irapay3.png', description: 'Logro destacado en 1999' },
-  { year: 2001, image: '/irapay1.png', description: 'Expansión en 2001' },
-  { year: 2002, image: '/irapay2.png', description: 'Innovación en 2002' },
-  { year: 2005, image: '/irapay3.png', description: 'Crecimiento en 2005' },
-  { year: 2009, image: '/irapay1.png', description: 'Reconocimiento en 2009' },
-  { year: 2010, image: '/irapay2.png', description: 'Nuevo hito en 2010' },
-  { year: 2011, image: '/irapay3.png', description: 'Logro reciente en 2011' },
+export const certifications = [
+  { id: 1, name: "Certificado_de_Homologación_Servicios_Generales_Famtru_S.A.C" },
+  { id: 2, name: "CertificadoGenerado_SERVICIOS_GENERALES_FAMTRU_S.A.C" },
 ]
+
+export const policities = [
+  { id: 1, name: "POLITICA_DE_DATOS_PERSONALES" },
+  { id: 2, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1" },
+  { id: 3, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1H" },
+];
+
+export const timelineData = [
+  { year: 2010, image: '/images/about.jpg', description: 'Evento importante en 2010' },
+  { year: 2014, image: '/images/irapay1.png', description: 'Hito alcanzado en 2014' },
+  { year: 2018, image: '/images/irapay2.png', description: 'Desarrollo significativo en 2018' },
+  { year: 2022, image: '/images/irapay3.png', description: 'Logro destacado en 2022' },
+  { year: 2024, image: '/images/irapay1.png', description: 'Expansión en 2024' },
+];

@@ -56,7 +56,7 @@ const PhotoSwipeVideo = () => {
         <div className="grid sm:grid-cols-2 gap-4">
           <div className='relative order-2 sm:order-1'>
             <img
-              src="/video-thumbnail.png" // Miniatura del video
+              src="/images/video-thumbnail.webp" // Miniatura del video
               alt="video"
               className="h-full w-full object-cover"
               width={400}

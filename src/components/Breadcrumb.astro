@@ -6,16 +6,11 @@ interface Props {
   image: {
     path: string;
     alt: string;
-    style: string;
   };
-  title: string;
-  subtitle?: string;
 }
 
 const {
-  image: { path, alt, style },
-  title,
-  subtitle,
+  image: { path, alt },
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -33,7 +28,6 @@ if (!images[path])
     alt={alt}
     class="absolute object-cover w-full h-full"
     loading="eager"
-    style={style}
   />
   <div class="absolute inset-0 bg-black opacity-80 mix-blend-multiply"></div>
 </section>

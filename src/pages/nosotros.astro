@@ -8,19 +8,20 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 import PhotoSwipeVideo from "@components/PhotoSwipeVideo";
 import Stats from "@sections/Stats";
 import Timeline from "@sections/Timeline";
+import DocumentSlider from "@sections/DocumentSlider";
+import { certifications, policities, SITE_TITLE } from "src/constants";
 
 const image = {
   path: "/src/images/breadcrumb/bg-nosotros.jpg",
-  alt: "Iquitos Expedition - Tours Amazonas",
-  style: "",
+  alt: SITE_TITLE,
 };
 ---
 
 <Layout>
-  <Breadcrumb image={image} title="Nosotros" />
+  <Breadcrumb image={image} />
   <div class="flex flex-wrap relative">
     <div
-      class="bg-tertiary-500 flex-col items-center lg:h-[600px] lg:w-[600px] lg:rounded-br-3xl text-gray-900 leading-7 z-10 text-justify relative"
+      class="bg-[#edeae2] flex-col items-center lg:h-[600px] lg:w-[600px] lg:rounded-br-3xl text-gray-900 leading-7 z-10 text-justify relative"
     >
       <div
         class="lg:max-w-lg lg:absolute lg:right-0 flex flex-col h-full justify-center items-center lg:items-start px-8 py-12 gap-6"
@@ -41,17 +42,32 @@ const image = {
           de su empresa, garantizado por un efectivo sistema de supervisión y
           colaboradores calificados.
         </p>
-        <PhotoSwipeVideo client:load />
+        <PhotoSwipeVideo client:only="react" />
       </div>
     </div>
     <Image
       src={About}
       alt="ServiEstiba"
       class="absolute right-0 object-cover h-[600px] w-3/4 hidden lg:block"
+      loading="eager"
     />
   </div>
   <Timeline client:only="react" />
   <Stats client:visible />
+  <DocumentSlider
+    title="Certificaciones"
+    itemTitle="Certificación"
+    items={certifications}
+    filesLocation="certificaciones"
+    client:visible
+  />
+  <DocumentSlider
+    title="Políticas"
+    itemTitle="Política"
+    items={policities}
+    filesLocation="politicas"
+    client:visible
+  />
   <div class="grid xl:grid-cols-2">
     <div class="h-[500px] relative group">
       <Image
@@ -66,15 +82,15 @@ const image = {
       >
       </div>
       <div
-        class="absolute top-0 right-0 px-8 py-20 max-w-sm bg-[#add9bd] rounded-bl-2xl"
+        class="absolute top-0 right-0 px-8 py-20 max-w-sm bg-primary-100 rounded-bl-2xl"
       >
-        <h2 class="text-3xl font-bold text-green-900 mb-4">Nuestra historia</h2>
+        <h2 class="text-3xl font-bold text-green-900 mb-4">Misión</h2>
         <p class="text-sm text-green-900 text-justify">
-          En SERVIESTIBA, la eficiencia en nuestros servicios es una
-          preocupación constante para el buen funcionamiento de su empresa o
-          cualquier tipo de apoyo que se requiere ya sean de carácter
-          Industrial, Comercial, de dimensiones pequeñas, grandes y hasta muy
-          grandes (operatividad).
+          Somos equipos de trabajo eficaces especializados en estiba y desestiba
+          de contenedores, nuestros clientes respaldan nuestra calidad de
+          servicios, implementando mejoras continúas dentro nuestros procesos,
+          utilizamos nuevas tecnologías para la mejora de comunicación
+          interactiva.
         </p>
       </div>
     </div>
@@ -91,17 +107,13 @@ const image = {
       >
       </div>
       <div
-        class="absolute top-0 right-0 px-8 py-20 max-w-sm bg-green-900 rounded-bl-2xl"
+        class="absolute top-0 right-0 px-8 py-20 max-w-sm bg-primary-900 rounded-bl-2xl"
       >
-        <h2 class="text-3xl font-bold text-[#add9bd] mb-4">
-          Nuestros servicios
-        </h2>
+        <h2 class="text-3xl font-bold text-primary-100 mb-4">Visión</h2>
         <p class="text-sm text-[#add9bd] text-justify">
-          En SERVIESTIBA, la eficiencia en nuestros servicios es una
-          preocupación constante para el buen funcionamiento de su empresa o
-          cualquier tipo de apoyo que se requiere ya sean de carácter
-          Industrial, Comercial, de dimensiones pequeñas, grandes y hasta muy
-          grandes (operatividad).
+          Ser una empresa líder, especializada en el servicio de estiba y
+          desestiba de contenedores, siendo nuestras principales características
+          la eficiencia y confianza
         </p>
       </div>
     </div>

@@ -52,7 +52,9 @@ Confían en nosotros
                                 maxHeight: '300px',
                                 paddingTop: '3rem',
                                 paddingBottom: '3rem'
-                            }} />
+                            }}
+                            loading='lazy'
+                             />
                     </SwiperSlide>
                 )
             }

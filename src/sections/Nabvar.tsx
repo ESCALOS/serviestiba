@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react"
-import { navItems, topbarLinks } from "src/constants"
+import { navItems } from "src/constants"
 import { FaXmark } from "react-icons/fa6"
 import { FaBars } from "react-icons/fa"
 import SuggestionForm from "../components/SuggestionForm"
@@ -44,7 +44,7 @@ const topbarItems = [
 function TopBar({ scrolled, isHome, handleOpenModal }: TopBarProps) {
     return (
         <div>
-            <div className={`${scrolled || !isHome ? 'bg-tertiary-500 text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
+            <div className={`${scrolled || !isHome ? 'bg-[#edeae2] text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
                 <div className="max-w-7xl mx-auto px-4">
                     <ul className="flex justify-end items-center gap-4 font-bold text-sm h-10">
                         {topbarItems.map(({ id, name, content }) => (
@@ -68,11 +68,11 @@ function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string
     const isHome = routePath === "/";
 
     return (
-        <ul className={`lg:flex hidden justify-around gap-4 items-center font-bold text-lg ${scrolled || !isHome ? 'text-green-700' : 'text-white'}`}>
+        <ul className={`lg:flex hidden justify-around gap-4 items-center font-bold text-lg ${scrolled || !isHome ? 'text-primary-700' : 'text-white'}`}>
             {
                 navItems.map(({ id, name, href }) =>
                     <li key={id}>
-                        <a className={`${routePath !== href ? 'hover:text-green-500' : 'text-green-500'}`} href={href}>{name}</a>
+                        <a className={`${routePath !== href ? 'hover:text-tertiary-700' : 'text-tertiary-700'}`} href={href}>{name}</a>
                     </li>
                 )
             }
@@ -92,25 +92,23 @@ function Sidebar({ open, routePath, handleOpenModal }: SidebarProps) {
                     } transition-transform duration-300 ease-in-out z-50`}
             >
                 <ul className="flex flex-col h-full gap-8 p-8">
-                    {
-                        navItems.map(({ id, name, href }) =>
+                    {navItems.map(({ id, name, href }) =>
                             <li key={id}>
-                                <a className={`text-lg uppercase font-bold  ${isHome ? 'text-stone-600 hover:text-green-700' : 'text-green-700'}`} href={href}>{name}</a>
+                                <a className={`text-lg uppercase font-bold  ${routePath === href ? 'text-secondary-700' : 'text-primary-700 hover:text-secondary-700'}`} href={href}>{name}</a>
                             </li>
-                        )
-                    }
+                    )}
                     {topbarItems.map(({ id, name, content }) => (
                         <li key={id}>
                             <button
                                 onClick={() => handleOpenModal(content)}
-                                className={`text-lg uppercase font-bold  ${isHome ? 'text-stone-600 hover:text-green-700' : 'text-green-700'}`}
+                                className={`text-lg uppercase font-bold  ${'text-primary-700 hover:text-secondary-700'}`}
                             >
                                 {name}
                             </button>
                         </li>
                     ))}
                     <li className="mt-8">
-                        <a className={`py-4 px-8 rounded-2xl text-lg uppercase font-bold text-green-700 border border-green-700 hover:text-white hover:bg-green-700`} href="/intranet">Intranet</a>
+                        <a className={`py-4 px-8 rounded-2xl text-lg uppercase font-bold text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700`} href="/intranet">Intranet</a>
                     </li>
                 </ul>
             </div>

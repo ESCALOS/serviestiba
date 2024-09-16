@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
-import { timelineData } from 'src/constants'; // Asegúrate de tener este archivo con los datos
+import { SITE_TITLE, timelineData } from 'src/constants'; // Asegúrate de tener este archivo con los datos
 import useWindowWidth from 'src/hooks/useWindowWith';
 
 const Timeline: React.FC = () => {
@@ -58,8 +58,8 @@ const Timeline: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 md:px-12 py-24">
      <div className='mb-8 text-center lg:text-left'>
-      <h2 className='text-2xl md:text-4xl text-[#013532] font-bold mb-4'>45 años cultivando vínculos fértiles</h2>
-      <h3 className='text-lg md:text-2xl text-[#013532]'>Conoce nuestra historia en la línea de tiempo</h3>
+      <h2 className='text-2xl md:text-4xl text-primary-900 font-bold mb-4'>Mas de 10 años brindado soluciones a la logística</h2>
+      <h3 className='text-lg md:text-2xl text-primary-900'>Conoce nuestra historia en la línea de tiempo</h3>
      </div>
       <div className="relative flex items-center justify-between">
         {/* Botón anterior */}
@@ -72,7 +72,7 @@ const Timeline: React.FC = () => {
 
         {/* Contenedor de la línea de tiempo */}
         <div className="flex-1 mx-12 overflow-hidden">
-          <div className="h-1 bg-[#03bf67] relative mb-12">
+          <div className="h-1 bg-primary-500 relative mb-12">
             <div
               ref={timelineRef}
               className={`absolute top-0 left-0 w-full flex justify-between duration-300 ease-in-out ${!isTransitioning && 'transition-none'}`}
@@ -92,7 +92,7 @@ const Timeline: React.FC = () => {
                   <button
                     onClick={() => handleYearClick(index)}
                     className={`mt-2 md:text-2xl font-bold ${
-                      index === activeYearIndex ? 'text-[#013532]' : 'text-[#bed374]'
+                      index === activeYearIndex ? 'text-primary-900' : 'text-tertiary-500'
                     }`}
                   >
                     {item.year}
@@ -113,10 +113,13 @@ const Timeline: React.FC = () => {
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 justify-center mt-16'>
-          <img src={visualTimelineData[activeYearIndex].image} alt="nosotros" className='w-full h-96 object-cover rounded-t-lg md:rounded-t-none md:rounded-l-lg' />
-          <div className='bg-[#013532] h-96 w-full flex flex-col justify-center items-center gap-2 rounded-b-lg md:rounded-b-none md:rounded-r-lg'>
-              <h1 className='text-4xl text-[#03bf67]'>{visualTimelineData[activeYearIndex].year}</h1>
-              <p className='text-lg text-[#add9bd]'>{visualTimelineData[activeYearIndex].description}</p>
+          <img 
+            src={visualTimelineData[activeYearIndex].image} 
+            alt={SITE_TITLE}
+            className='w-full h-96 object-cover rounded-t-lg md:rounded-tr-none md:rounded-l-lg' />
+          <div className='bg-primary-900 h-96 w-full flex flex-col justify-center items-center gap-2 rounded-b-lg md:rounded-bl-none md:rounded-r-lg'>
+              <h1 className='text-6xl text-primary-500 font-bold'>{visualTimelineData[activeYearIndex].year}</h1>
+              <p className='text-lg text-primary-100'>{visualTimelineData[activeYearIndex].description}</p>
           </div>
       </div>
     </div>

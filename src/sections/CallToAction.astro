@@ -4,7 +4,7 @@ import { BsWhatsapp } from "react-icons/bs";
 
 <section
   class="relative bg-cover bg-center h-[50vh] flex items-center justify-center"
-  style="background-image: url('/about.jpg');"
+  style="background-image: url('/images/about.jpg');"
   id="contactenos"
 >
   <div class="bg-black bg-opacity-75 h-full w-full">
@@ -26,7 +26,8 @@ import { BsWhatsapp } from "react-icons/bs";
           >Contáctenos</a
         >
         <a
-          href="#"
+          href={import.meta.env.PUBLIC_WHATSAPP_LINK}
+          target="_blank"
           class="bg-green-500 flex items-center gap-1 rounded-md text-white font-semibold py-2 px-6 hover:bg-green-600 transition"
         >
           Escríbenos
