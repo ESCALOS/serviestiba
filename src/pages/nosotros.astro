@@ -7,6 +7,7 @@ import Layout from "src/layouts/Layout.astro";
 import Breadcrumb from "@components/Breadcrumb.astro";
 import PhotoSwipeVideo from "@components/PhotoSwipeVideo";
 import Stats from "@sections/Stats";
+import Timeline from "@sections/Timeline";
 
 const image = {
   path: "/src/images/breadcrumb/bg-nosotros.jpg",
@@ -49,6 +50,7 @@ const image = {
       class="absolute right-0 object-cover h-[600px] w-3/4 hidden lg:block"
     />
   </div>
+  <Timeline client:only="react" />
   <Stats client:visible />
   <div class="grid xl:grid-cols-2">
     <div class="h-[500px] relative group">

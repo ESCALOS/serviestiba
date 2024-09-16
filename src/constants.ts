@@ -74,3 +74,16 @@ export const clients = [
   { id: 10, name: "tcli" },
   { id: 11, name: "transpesa" }
 ];
+
+export const timelineData = [
+  { year: 1981, image: '/about.jpg', description: 'Evento importante en 1981' },
+  { year: 1994, image: '/irapay1.png', description: 'Hito alcanzado en 1994' },
+  { year: 1996, image: '/irapay2.png', description: 'Desarrollo significativo en 1996' },
+  { year: 1999, image: '/irapay3.png', description: 'Logro destacado en 1999' },
+  { year: 2001, image: '/irapay1.png', description: 'Expansión en 2001' },
+  { year: 2002, image: '/irapay2.png', description: 'Innovación en 2002' },
+  { year: 2005, image: '/irapay3.png', description: 'Crecimiento en 2005' },
+  { year: 2009, image: '/irapay1.png', description: 'Reconocimiento en 2009' },
+  { year: 2010, image: '/irapay2.png', description: 'Nuevo hito en 2010' },
+  { year: 2011, image: '/irapay3.png', description: 'Logro reciente en 2011' },
+]
