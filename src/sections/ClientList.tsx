@@ -44,7 +44,7 @@ Confían en nosotros
                 clients.map(({ id, name }) =>
                     <SwiperSlide key={id} className='flex items-center justify-center text-center bg-white'>
                         <img
-                            src={`src/images/clients/${name}.png`}
+                            src={`/clients/${name}.png`}
                             alt={name}
                             style={{
                                 display: 'inline-block',
