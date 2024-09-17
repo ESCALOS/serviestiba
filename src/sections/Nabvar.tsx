@@ -12,8 +12,6 @@ type Props = {
 }
 
 type TopBarProps = {
-    scrolled: boolean;
-    isHome: boolean;
     handleOpenModal: (content: ReactNode) => void
 }
 
@@ -41,10 +39,10 @@ const topbarItems = [
     },
 ];
 
-function TopBar({ scrolled, isHome, handleOpenModal }: TopBarProps) {
+function TopBar({ handleOpenModal }: TopBarProps) {
     return (
         <div>
-            <div className={`${scrolled || !isHome ? 'bg-[#edeae2] text-green-700' : 'bg-black bg-opacity-50 text-white'} hidden lg:block fixed top-0 w-full z-20`}>
+            <div className={`bg-white text-info-500 hidden lg:block fixed top-0 w-full z-20`}>
                 <div className="max-w-7xl mx-auto px-4">
                     <ul className="flex justify-end items-center gap-4 font-bold text-sm h-10">
                         {topbarItems.map(({ id, name, content }) => (
@@ -64,27 +62,25 @@ function TopBar({ scrolled, isHome, handleOpenModal }: TopBarProps) {
     );
 }
 
-function NavList({ scrolled, routePath }: { scrolled: boolean, routePath: string }) {
-    const isHome = routePath === "/";
+function NavList({ routePath }: { routePath: string }) {
 
     return (
-        <ul className={`lg:flex hidden justify-around gap-4 items-center font-bold text-lg ${scrolled || !isHome ? 'text-primary-700' : 'text-white'}`}>
+        <ul className={`lg:flex hidden justify-around gap-4 items-center font-bold text-lg text-white`}>
             {
                 navItems.map(({ id, name, href }) =>
                     <li key={id}>
-                        <a className={`${routePath !== href ? 'hover:text-tertiary-700' : 'text-tertiary-700'}`} href={href}>{name}</a>
+                        <a className={`${routePath !== href ? 'hover:text-secondary-500' : 'text-secondary-500'}`} href={href}>{name}</a>
                     </li>
                 )
             }
             <li className="pl-4">
-                <a className={`py-2 px-4 rounded-md text-xl text-white transition-all ${scrolled || !isHome ? 'bg-green-400 hover:bg-green-700' : 'border hover:bg-green-500'}`} href="/intranet">Intranet</a>
+                <a className={`py-2 px-4 rounded-md text-xl text-white transition-all border hover:bg-white hover:text-primary-500`} href="/intranet">Intranet</a>
             </li>
         </ul >
     )
 }
 
 function Sidebar({ open, routePath, handleOpenModal }: SidebarProps) {
-    const isHome = routePath === "/";
     return (
         <div className="relative lg:hidden">
             <div
@@ -94,21 +90,21 @@ function Sidebar({ open, routePath, handleOpenModal }: SidebarProps) {
                 <ul className="flex flex-col h-full gap-8 p-8">
                     {navItems.map(({ id, name, href }) =>
                             <li key={id}>
-                                <a className={`text-lg uppercase font-bold  ${routePath === href ? 'text-secondary-700' : 'text-primary-700 hover:text-secondary-700'}`} href={href}>{name}</a>
+                                <a className={`text-lg uppercase font-bold  ${routePath === href ? 'text-secondary-500' : 'text-primary-500 hover:text-secondary-500'}`} href={href}>{name}</a>
                             </li>
                     )}
                     {topbarItems.map(({ id, name, content }) => (
                         <li key={id}>
                             <button
                                 onClick={() => handleOpenModal(content)}
-                                className={`text-lg uppercase font-bold  ${'text-primary-700 hover:text-secondary-700'}`}
+                                className={`text-lg uppercase font-bold  ${'text-primary-500 hover:text-secondary-500'}`}
                             >
                                 {name}
                             </button>
                         </li>
                     ))}
                     <li className="mt-8">
-                        <a className={`py-4 px-8 rounded-2xl text-lg uppercase font-bold text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700`} href="/intranet">Intranet</a>
+                        <a className={`py-4 px-8 rounded-2xl text-lg uppercase font-bold text-primary-500 border border-primary-500 hover:text-white hover:bg-primary-500`} href="/intranet">Intranet</a>
                     </li>
                 </ul>
             </div>
@@ -118,7 +114,6 @@ function Sidebar({ open, routePath, handleOpenModal }: SidebarProps) {
 
 function Navbar({ logo, routePath }: Props) {
     const [open, setOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState<React.ReactNode>(null);
 
@@ -131,19 +126,10 @@ function Navbar({ logo, routePath }: Props) {
         setModalOpen(false);
         setModalContent(null);
     };
-    const isHome = routePath === "/";
 
     const toggleSidebar = () => {
         setOpen(!open);
     }
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20)
-        }
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
 
     useEffect(() => {
         window.addEventListener(
@@ -154,21 +140,21 @@ function Navbar({ logo, routePath }: Props) {
 
     return (
         <>
-            <TopBar scrolled={scrolled} isHome={isHome} handleOpenModal={handleOpenModal} />
-            <div className={`fixed top-0 lg:top-10 z-20 w-full ${(scrolled || !isHome) ? 'bg-white border-b' : 'bg-white lg:bg-transparent lg:backdrop-blur-md'}`}>
+            <TopBar handleOpenModal={handleOpenModal} />
+            <div className={`fixed top-0 lg:top-10 z-20 w-full bg-primary-500`}>
                 <nav className="max-w-7xl mx-auto px-4 flex justify-between items-center h-24">
-                    <a href="/"><img className={`${!scrolled && isHome && 'lg:brightness-[8]'}`} src={logo} alt="Logo" width={200} /></a>
-                    <NavList scrolled={scrolled} routePath={routePath} />
+                    <a href="/"><img className="brightness-[8]" src={logo} alt="Logo" width={200} /></a>
+                    <NavList routePath={routePath} />
                     {/* Botón para abrir/cerrar la sidebar */}
                     <button
                         onClick={toggleSidebar}
-                        className="p-4 focus:outline-none lg:hidden text-green-600"
+                        className="p-4 focus:outline-none lg:hidden text-white"
                     >
                         {open ? <FaXmark size={24} /> : <FaBars size={24} />}
                     </button>
                 </nav>
             </div>
-            <div className={`h-24 relative ${isHome ? 'lg:h-0' : 'lg:h-[136px]'} bg-white`}></div>
+            <div className={`h-24 relative lg:h-[136px] bg-white`}></div>
             <Sidebar open={open} routePath={routePath} handleOpenModal={handleOpenModal} />
             {/* Modal */}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>

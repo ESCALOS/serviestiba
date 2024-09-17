@@ -83,12 +83,17 @@ export const clients = [
 export const certifications = [
   { id: 1, name: "Certificado_de_Homologación_Servicios_Generales_Famtru_S.A.C" },
   { id: 2, name: "CertificadoGenerado_SERVICIOS_GENERALES_FAMTRU_S.A.C" },
+  { id: 3, name: "Certificado_de_Homologación_Servicios_Generales_Famtru_S.A.C" },
+  { id: 4, name: "CertificadoGenerado_SERVICIOS_GENERALES_FAMTRU_S.A.C" },
 ]
 
 export const policities = [
   { id: 1, name: "POLITICA_DE_DATOS_PERSONALES" },
   { id: 2, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1" },
   { id: 3, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1H" },
+  { id: 4, name: "POLITICA_DE_DATOS_PERSONALES" },
+  { id: 5, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1" },
+  { id: 6, name: "SIG-SSOMA-POL-001-POLITICA_DE_SST_1H" },
 ];
 
 export const timelineData = [

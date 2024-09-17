@@ -65,7 +65,7 @@ const Timeline: React.FC = () => {
         {/* Botón anterior */}
         <button
           onClick={handlePrevious}
-          className="absolute left-0 z-10 bg-white hover:bg-yellow-500 rounded-full border p-1 border-yellow-500 transition-all"
+          className="absolute left-0 z-10 bg-white hover:bg-secondary-500 rounded-full border p-1 border-secondary-500 transition-all"
         >
           <LuChevronLeft size={24} />
         </button>
@@ -88,11 +88,11 @@ const Timeline: React.FC = () => {
                   width: `${width / (width > 768 ? 6 : 4)}px`,
                   marginLeft: index === timelineData.length ? `${(width / (width > 768 ? 12 : 8))}px` : '0', // Ajusta el margen del primer año
                 }}>
-                  <div className="h-4 w-1 bg-[#03bf67] rounded-sm" />
+                  <div className="h-4 w-1 bg-primary-500 rounded-sm" />
                   <button
                     onClick={() => handleYearClick(index)}
                     className={`mt-2 md:text-2xl font-bold ${
-                      index === activeYearIndex ? 'text-primary-900' : 'text-tertiary-500'
+                      index === activeYearIndex ? 'text-primary-500' : 'text-primary-300'
                     }`}
                   >
                     {item.year}
@@ -106,7 +106,7 @@ const Timeline: React.FC = () => {
         {/* Botón siguiente */}
         <button
           onClick={handleNext}
-          className="absolute right-0 z-10 bg-white hover:bg-yellow-500 rounded-full border p-1 border-yellow-500 transition-all"
+          className="absolute right-0 z-10 bg-white hover:bg-secondary-500 rounded-full border p-1 border-secondary-500 transition-all"
         >
           <LuChevronRight size={24} />
         </button>
@@ -117,8 +117,8 @@ const Timeline: React.FC = () => {
             src={visualTimelineData[activeYearIndex].image} 
             alt={SITE_TITLE}
             className='w-full h-96 object-cover rounded-t-lg md:rounded-tr-none md:rounded-l-lg' />
-          <div className='bg-primary-900 h-96 w-full flex flex-col justify-center items-center gap-2 rounded-b-lg md:rounded-bl-none md:rounded-r-lg'>
-              <h1 className='text-6xl text-primary-500 font-bold'>{visualTimelineData[activeYearIndex].year}</h1>
+          <div className='bg-primary-700 h-96 w-full flex flex-col justify-center items-center gap-2 rounded-b-lg md:rounded-bl-none md:rounded-r-lg'>
+              <h1 className='text-6xl text-primary-400 font-bold'>{visualTimelineData[activeYearIndex].year}</h1>
               <p className='text-lg text-primary-100'>{visualTimelineData[activeYearIndex].description}</p>
           </div>
       </div>
