@@ -5,4 +5,5 @@ interface ImportMetaEnv {
   PUBLIC_WHATSAPP_LINK: string;
   SECRET_RESEND: string;
   PUBLIC_SUGGESTION_EMAIL: string;
+  PUBLIC_CONTACT_EMAIL: string;
 }

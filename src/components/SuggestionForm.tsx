@@ -58,7 +58,7 @@ const SuggestionForm: React.FC = () => {
                     >
                         Nombre
                     </label>
-                    {errors.firstName && <span className="text-sm text-red-500">{errors.firstName.message}</span>}{errors.firstName && <span className="text-sm text-red-500">{errors.firstName.message}</span>}
+                    {errors.firstName && <span className="text-sm text-red-500">{errors.firstName.message}</span>}
                 </div>
                 <div className="relative w-full">
                     <input

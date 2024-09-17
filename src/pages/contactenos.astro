@@ -1,10 +1,14 @@
 ---
+import { BiEnvelope, BiPhoneCall } from "react-icons/bi";
 import Layout from "src/layouts/Layout.astro";
+import ContactForm from "@components/ContactForm";
 ---
 
 <Layout>
-  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 py-24">
-    <div>
+  <div
+    class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 py-[99px]"
+  >
+    <div class="flex flex-col justify-center gap-8 max-w-96">
       <h1 class="text-primary-900 text-4xl font-semibold">
         Estamos en Contacto
       </h1>
@@ -12,11 +16,32 @@ import Layout from "src/layouts/Layout.astro";
         Escríbenos por cualquiera de nuestros medios para solicitar más
         información y poder atenderte.
       </p>
-      <h3 class="text-primary-900 text-sm">Central de pedidos</h3>
-      <ul>
-        <li></li>
-      </ul>
+      <div>
+        <h3 class="text-primary-900 font-bold mb-4">Central de pedidos</h3>
+        <ul class="space-y-4">
+          <li class="flex gap-2 items-center">
+            <BiEnvelope size={24} className="text-secondary-500" />
+            <a
+              href="mailto:consultas@serviestiba.pe"
+              class="font-light text-primary-900"
+            >
+              Correo: consultas@serviestiba.pe
+            </a>
+          </li>
+          <li class="flex gap-2 items-center">
+            <BiPhoneCall size={24} className="text-secondary-500" />
+            <a href="tel:+51 989 220 092" class="font-light text-primary-900">
+              Whatsapp: 989 220 092
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div></div>
+    <div>
+      <h3 class="text-xl text-primary-900 mb-4">
+        Escríbenos para recibir más información:
+      </h3>
+      <ContactForm client:only="react" />
+    </div>
   </div>
 </Layout>
